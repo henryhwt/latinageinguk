@@ -1,0 +1,69 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply font-sans text-gray-800 bg-gray-50;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold text-gray-900;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+
+  h5 {
+    @apply text-lg md:text-xl;
+  }
+
+  h6 {
+    @apply text-base md:text-lg;
+  }
+
+.material-icons {
+  font-size: inherit !important;
+}
+
+
+}
+
+ @layer components {
+  .container {
+    @apply px-4 mx-auto max-w-7xl;
+    
+  }
+  .btn {
+    @apply inline-flex items-center justify-center px-5 py-3 text-base font-medium transition-all rounded-md shadow-sm;
+  }
+
+ 
+
+    .card {
+    @apply overflow-hidden transition-all bg-white rounded-lg shadow-md hover:shadow-lg;
+  }
+} 
+

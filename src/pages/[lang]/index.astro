@@ -1,0 +1,299 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import HeroSection from "../../components/sections/HeroSection.astro";
+import EventList from "../../components/sections/EventList.astro";
+import SermonList from "../../components/sections/SermonList.astro";
+import Button from "../../components/UI/Button.astro";
+
+import { LOCALES, useTranslations, type Lang } from "../../i18n";
+
+const t = useTranslations(Astro.currentLocale as Lang);
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const locale = Astro.currentLocale as Lang;
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+---
+
+<BaseLayout>
+  <HeroSection
+    title="Latin Ageing UK C.I.C"
+    subtitle="Join us in rediscovering joy and vitality in every moment!"
+    backgroundImage="/heroimage.jpg"
+    ctaText="Get In Touch"
+    ctaLink="/im-new"
+    secondaryCtaText="Read Blog"
+    secondaryCtaLink="/sermons"
+  />
+
+  <!-- Service Times -->
+  <section class="py-16 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">
+          {
+            t({
+              en: "Healthwatch Southwark: 1 Year Update",
+              es: "Healthwatch Southwark: Actualización de 1 año",
+            })
+          }
+        </h2>
+        <p class="text-xl text-gray-600 max-w-8xl mx-auto mb-6">
+          {
+            t({
+              en: "Over the past year, Patricia Cuenca has been proud to work alongside Healthwatch Southwark as Community Health Ambassador and Founder of Latin Ageing UK. Together, we launched an important research report: Access to Health and Social Care for Latin American Communities in Southwark.",
+              es: "Durante el último año, Patricia Cuenca se enorgulleció de trabajar junto a Healthwatch Southwark como Embajadora de Salud Comunitaria y fundadora de Latin Ageing UK. Juntos, lanzamos un importante informe de investigación: Acceso a la atención sanitaria y social para las comunidades latinoamericanas en Southwark.",
+            })
+          }
+        </p>
+
+        <p class="text-xl text-gray-600 max-w-8xl mx-auto mb-8">
+          {
+            t({
+              en: "As someone deeply embedded in the Latin American community, I know firsthand how our voices have too often been left out of conversations about health inequalities. This project emerged precisely because we recognised this gap and wanted to ensure that the needs and experiences of Latin Americans in Southwark are finally acknowledged and addressed by our health and social care services.",
+              es: "Como alguien profundamente arraigado en la comunidad latinoamericana, sé de primera mano cómo nuestras voces, con demasiada frecuencia, se han quedado al margen de las conversaciones sobre las desigualdades en salud. Este proyecto surgió precisamente porque reconocimos esta brecha y queríamos asegurar que las necesidades y experiencias de los latinoamericanos en Southwark fueran finalmente reconocidas y atendidas por nuestros servicios de salud y asistencia social.",
+            })
+          }
+        </p>
+
+        <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <div class="bg-gray-50 p-8 rounded-lg shadow-sm">
+            <h3 class="text-xl font-bold mb-3">Morning Service</h3>
+            <p class="text-2xl font-bold text-primary-600 mb-2">8:00 AM</p>
+            <p class="text-gray-600 mb-4">Traditional service with hymns and choir</p>
+            <p class="italic text-gray-500">In-person & Livestream</p>
+          </div>
+          
+          <div class="bg-gray-50 p-8 rounded-lg shadow-sm">
+            <h3 class="text-xl font-bold mb-3">Family Service</h3>
+            <p class="text-2xl font-bold text-primary-600 mb-2">10:30 AM</p>
+            <p class="text-gray-600 mb-4">Contemporary worship with children's ministry</p>
+            <p class="italic text-gray-500">In-person only</p>
+          </div>
+        </div> -->
+
+        <Button
+          href="https://www.healthwatchsouthwark.org/news/2024-10-02/1-year-update-our-latin-american-access-report"
+          variant="outline"
+          >{
+            t({
+              en: "Read The Report",
+              es: "Leer El Informe",
+            })
+          }
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="flex justify-center">
+          <img
+            src="/heroimage.jpg"
+            alt="Our Church"
+            class="rounded-lg shadow-lg object-cover h-full max-h-90"
+          />
+        </div>
+
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            {
+              t({
+                en: "About us",
+                es: "Sobre nosotros",
+              })
+            }
+          </h2>
+          <p class="text-gray-700 mb-6 text-lg">
+            {
+              t({
+                en: "Latin Ageing UK is dedicated to empowering people aged 50 and over from the Latin American and Spanish-speaking communities in the London Borough of Southwark.",
+                es: "Latin Ageing UK se dedica a empoderar a personas de 50 años o más de las comunidades latinoamericana e hispanohablante del distrito londinense de Southwark.",
+              })
+            }
+          </p>
+          <p class="text-gray-700 mb-8 text-lg">
+            {
+              t({
+                en: "Our charity offers a vibrant range of cultural, social, and  educational activities designed to boost wellbeing, combat loneliness, and enhance quality of life for older adults.",
+                es: "Nuestra organización benéfica ofrece una vibrante gama de actividades culturales, sociales y educativas diseñadas para impulsar el bienestar, combatir la soledad y mejorar la calidad de vida de los adultos mayores.",
+              })
+            }
+          </p>
+
+          <Button href="/about-us">
+            {
+              t({
+                en: "Learn More About Us ",
+                es: "Más información sobre nosotros",
+              })
+            }</Button
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">
+          {
+            t({
+              en: "Southwark Council's Free Booklet",
+              es: "Folleto gratuito del Ayuntamiento de Southwark",
+            })
+          }
+        </h2>
+        <p class="text-xl text-gray-600 max-w-8xl mx-auto mb-6">
+          {
+            t({
+              en: "Download a free downloadable booklet with more information about the Latin Ageing UK C.I.C - as well as other organisations and services in Southwark that support healthy ageing for residents aged 50+.",
+              es: "Descargue un folleto descargable gratuito con más información sobre Latin Ageing UK C.I.C, así como otras organizaciones y servicios en Southwark que apoyan el envejecimiento saludable de los residentes mayores de 50 años.",
+            })
+          }
+        </p>
+
+        <Button
+          href="https://www.southwark.gov.uk/adult-social-care/living-independently/get-support-home"
+          variant="outline"
+          >{
+            t({
+              en: "Learn More",
+              es: "Aprender Más",
+            })
+          }
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <!-- <EventList /> -->
+
+  <!-- Sermons Section -->
+  <!-- <SermonList /> -->
+
+  <!-- Ministries Preview -->
+  <section class="py-16 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Activities</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Discover how you can connect, serve, and grow through our various activies
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+    <div class="card text-center p-8">
+      <div
+        class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center"
+      >
+        <i class="material-icons">diversity_1</i>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3">Community Connection</h3>
+      <p class="text-gray-700 mb-4">
+        Make new friends and rediscover the joy of socialising in a
+        welcoming, inclusive environment.
+      </p>
+      <!-- <a
+        href="/ministries/worship-ministry"
+        class="text-primary-600 font-medium hover:text-primary-700"
+      >
+        Learn More →
+      </a> -->
+    </div>
+
+    <div class="card text-center p-8">
+      <div
+        class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center"
+      >
+        <i class="material-icons">diversity_1</i>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3">Creative Activities</h3>
+      <p class="text-gray-700 mb-4">
+        Fun opportunties to express yourself through art, dance, music, and more.
+      </p>
+    </div>
+    <div class="card text-center p-8">
+      <div
+        class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center"
+      >
+        <i class="material-icons">diversity_1</i>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3">Health & Fitness</h3>
+      <p class="text-gray-700 mb-4">
+        Stay fit and active with age-appropriate exercise classes.
+      </p>
+    </div>
+    <div class="card text-center p-8">
+      <div
+        class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center"
+      >
+        <i class="material-icons">diversity_1</i>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3">Cultural Outings</h3>
+      <p class="text-gray-700 mb-4">
+        Enjoy trips and experiences that celebrate Latin American heritage.
+      </p>
+    </div>
+    <div class="card text-center p-8">
+      <div
+        class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center"
+      >
+        <i class="material-icons">diversity_1</i>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3">English Classes</h3>
+      <p class="text-gray-700 mb-4">
+        Improve your English and gain independence in everyday life.
+      </p>
+    </div>
+  </div>
+    </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section
+      class="py-20 bg-cover bg-center text-white"
+      style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/uploads/thank-you-bg.webp)"
+    >
+      <div class="container">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+            Ready to Join Our Community?
+          </h2>
+          <p class="text-xl mb-8">
+            We'd love to welcome you to our church family. Come visit us this
+            Sunday or reach out with any questions.
+          </p>
+
+          <div class="flex flex-wrap justify-center gap-4">
+            <Button href="/im-new" variant="primary" size="lg">
+              I'm New Here
+            </Button>
+
+            <Button
+              href="/contact"
+              variant="outline"
+              size="lg"
+              class="bg-white/10 text-white border-white hover:bg-white hover:text-gray-900 backdrop-blur-sm"
+            >
+              Contact Us
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+</BaseLayout>
