@@ -1,11 +1,11 @@
 ---
-name: "Rev. Sarah Martinez"
-title: "Associate Pastor & Women's Ministry Director"
-image: "/uploads/staff/sarah-martinez.webp"
+name: "Patricia Cuenca"
+title: "Founder and Community Health Ambassador"
+image: "/uploads/staff/flowers.jpg"
 email: "sarah.martinez@churchname.org"
 phone: "+1-555-0102"
-bio: "Pastor Sarah leads our women's ministry and provides pastoral care with a heart for discipleship and community building."
-order: 3
+bio: " Dedicated to empowering people aged 50 and over from the Latin American and Spanish-speaking communities in the London Borough of Southwark."
+order: 1
 draft: false
 ---
 
