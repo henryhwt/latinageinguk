@@ -1,7 +1,7 @@
 ---
 name: "Patricia Cuenca"
 title: "Founder and Community Health Ambassador"
-image: "/uploads/staff/flowers.jpg"
+image: "/uploads/staff/patricia-cuenca-founder.jpg"
 email: "sarah.martinez@churchname.org"
 phone: "+1-555-0102"
 bio: " Dedicated to empowering people aged 50 and over from the Latin American and Spanish-speaking communities in the London Borough of Southwark."
