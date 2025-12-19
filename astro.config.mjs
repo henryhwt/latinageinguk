@@ -17,8 +17,7 @@ export default defineConfig({
 
   //local host
   // site: 'http://localhost:432',
-  site: 'https://henryhwt.github.io',
-   base: '/latinageinguk',
+  site: 'https://latinageinguk.co.uk',
   vite: {
     plugins: [tailwindcss()]
   }
