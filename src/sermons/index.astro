@@ -1,9 +1,9 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import PageHeader from "../../components/sections/PageHeader.astro";
-import Card from "../../components/UI/Card.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/sections/PageHeader.astro";
+import Card from "../components/ui/Card.astro";
 import { getCollection } from "astro:content";
-import { formatDate } from "../../utils/dateUtils";
+import { formatDate } from "../utils/dateUtils";
 
 // Get all sermons
 const allSermons = await getCollection("sermons", ({ data }) => {
@@ -202,11 +202,11 @@ const speakers = [...new Set(sermons.map(sermon => sermon.data.speaker))];
       
       // Function to filter sermons
       const filterSermons = () => {
-        const searchTerm = searchInput?.value.toLowerCase() || '';
-        const selectedSeries = seriesSelect?.value || '';
-        const selectedSpeaker = speakerSelect?.value || '';
-        const fromDate = fromDateInput?.value || '';
-        const toDate = toDateInput?.value || '';
+        // const searchTerm = searchInput?.value.toLowerCase() || '';
+        // const selectedSeries = seriesSelect?.value || '';
+        // const selectedSpeaker = speakerSelect?.value || '';
+        // const fromDate = fromDateInput?.value || '';
+        // const toDate = toDateInput?.value || '';
         
         let visibleCount = 0;
         
@@ -218,19 +218,19 @@ const speakers = [...new Set(sermons.map(sermon => sermon.data.speaker))];
           const date = card.getAttribute('data-date') || '';
           
           // Check if sermon matches all filters
-          const matchesSearch = title.includes(searchTerm) || summary.includes(searchTerm);
-          const matchesSeries = !selectedSeries || series === selectedSeries;
-          const matchesSpeaker = !selectedSpeaker || speaker === selectedSpeaker;
-          const matchesFromDate = !fromDate || date >= fromDate;
-          const matchesToDate = !toDate || date <= toDate;
+          // const matchesSearch = title.includes(searchTerm) || summary.includes(searchTerm);
+          // const matchesSeries = !selectedSeries || series === selectedSeries;
+          // const matchesSpeaker = !selectedSpeaker || speaker === selectedSpeaker;
+          // const matchesFromDate = !fromDate || date >= fromDate;
+          // const matchesToDate = !toDate || date <= toDate;
           
           // Show/hide the sermon card
-          if (matchesSearch && matchesSeries && matchesSpeaker && matchesFromDate && matchesToDate) {
-            card.style.display = 'block';
-            visibleCount++;
-          } else {
-            card.style.display = 'none';
-          }
+          // if (matchesSearch && matchesSeries && matchesSpeaker && matchesFromDate && matchesToDate) {
+            // card.style.display = 'block';
+          //   visibleCount++;
+          // } else {
+            // card.style.display = 'none';
+          // }
         });
         
         // Show/hide no results message
@@ -247,15 +247,16 @@ const speakers = [...new Set(sermons.map(sermon => sermon.data.speaker))];
       toDateInput?.addEventListener('change', filterSermons);
       
       // Reset filters
-      resetButton?.addEventListener('click', () => {
-        if (searchInput) searchInput.value = '';
-        if (seriesSelect) seriesSelect.value = '';
-        if (speakerSelect) speakerSelect.value = '';
-        if (fromDateInput) fromDateInput.value = '';
-        if (toDateInput) toDateInput.value = '';
+    //   resetButton?.addEventListener('click', () => {
+    //     if (searchInput) searchInput.value = '';
+    //     if (seriesSelect) seriesSelect.value = '';
+    //     if (speakerSelect) speakerSelect.value = '';
+    //     if (fromDateInput) fromDateInput.value = '';
+    //     if (toDateInput) toDateInput.value = '';
         
-        filterSermons();
-      });
+    //     filterSermons();
+    //   }
+    // );
     });
   </script>
 </BaseLayout>

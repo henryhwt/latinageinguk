@@ -1,9 +1,9 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import PageHeader from "../../components/sections/PageHeader.astro";
-import Card from "../../components/UI/Card.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHeader from "../../../components/sections/PageHeader.astro";
+import Card from "../../../components/ui/Card.astro";
 import { getCollection } from "astro:content";
-import { formatDate, isFutureDate, isPastDate } from "../../utils/dateUtils";
+import { formatDate, isFutureDate, isPastDate } from "../../../utils/dateUtils";
 
 // Get all events
 const allEvents = await getCollection("events", ({ data }) => {
