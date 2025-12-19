@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageHeader from "../../../components/sections/PageHeader.astro";
-import Card from "../../../components/UI/Card.astro";
+import Card from "../../../components/ui/Card.astro";
 import { getCollection } from "astro:content";
 import { formatDate } from "../../../utils/dateUtils";
 import { LOCALES, useTranslations, type Lang } from "../../../i18n";
@@ -201,15 +201,15 @@ const tags = [...new Set(posts.flatMap(post => post.data.tags))];
       
       // Function to filter blog posts
       const filterPosts = () => {
-        const searchTerm = searchInput?.value.toLowerCase() || '';
-        const authorTerm = authorInput?.value.toLowerCase() || '';
-        const fromDate = fromDateInput?.value || '';
-        const toDate = toDateInput?.value || '';
+        // const searchTerm = searchInput?.value.toLowerCase() || '';
+        // const authorTerm = authorInput?.value.toLowerCase() || '';
+        // const fromDate = fromDateInput?.value || '';
+        // const toDate = toDateInput?.value || '';
         
         // Get selected tags
         const selectedTags = Array.from(tagCheckboxes)
-          .filter(checkbox => checkbox.checked)
-          .map(checkbox => checkbox.value);
+          // .filter(checkbox => checkbox.checked)
+          // .map(checkbox => checkbox.value);
         
         let visibleCount = 0;
         
@@ -221,23 +221,24 @@ const tags = [...new Set(posts.flatMap(post => post.data.tags))];
           const tags = (card.getAttribute('data-tags') || '').split(',');
           
           // Check if post matches all filters
-          const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
-          const matchesAuthor = !authorTerm || author.includes(authorTerm);
-          const matchesFromDate = !fromDate || date >= fromDate;
-          const matchesToDate = !toDate || date <= toDate;
+          // const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+          // const matchesAuthor = !authorTerm || author.includes(authorTerm);
+          // const matchesFromDate = !fromDate || date >= fromDate;
+          // const matchesToDate = !toDate || date <= toDate;
           
           // Check if post has at least one of the selected tags (or if no tags are selected)
-          const matchesTags = selectedTags.length === 0 || 
-                             selectedTags.some(tag => tags.includes(tag));
+          // const matchesTags = selectedTags.length === 0 || 
+          //                    selectedTags.some(tag => tags.includes(tag));
           
           // Show/hide the blog card
-          if (matchesSearch && matchesAuthor && matchesFromDate && matchesToDate && matchesTags) {
-            card.style.display = 'block';
-            visibleCount++;
-          } else {
-            card.style.display = 'none';
-          }
-        });
+          // if (matchesSearch && matchesAuthor && matchesFromDate && matchesToDate && matchesTags) {
+            // card.style.display = 'block';
+            // visibleCount++;
+          // } else {
+            // card.style.display = 'none';
+          // }
+        }
+      );
         
         // Show/hide no results message
         if (noResults) {
@@ -256,16 +257,17 @@ const tags = [...new Set(posts.flatMap(post => post.data.tags))];
       
       // Reset filters
       resetButton?.addEventListener('click', () => {
-        if (searchInput) searchInput.value = '';
-        if (authorInput) authorInput.value = '';
+        // if (searchInput) searchInput.value = '';
+        // if (authorInput) authorInput.value = '';
         tagCheckboxes.forEach(checkbox => {
-          checkbox.checked = false;
+          // checkbox.checked = false;
         });
-        if (fromDateInput) fromDateInput.value = '';
-        if (toDateInput) toDateInput.value = '';
+        // if (fromDateInput) fromDateInput.value = '';
+        // if (toDateInput) toDateInput.value = '';
         
         filterPosts();
-      });
+      }
+    );
     });
   </script>
 </BaseLayout>

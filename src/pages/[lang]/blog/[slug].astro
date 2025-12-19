@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PostLayout from "../../../layouts/PostLayout.astro";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import { LOCALES, useTranslations, type Lang } from "../../../i18n";
 
 const t = useTranslations(Astro.currentLocale as Lang);
@@ -38,7 +38,7 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 
 // Find related posts (posts with matching tags)
-let relatedPosts = [];
+let relatedPosts: CollectionEntry<"blog">[] = [];
 try {
   const allPosts = await getCollection("blog", ({ data }) => {
     return import.meta.env.PROD ? !data.draft : true;
