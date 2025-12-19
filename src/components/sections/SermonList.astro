@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import Card from "../UI/Card.astro";
-import Button from "../UI/Button.astro";
+import Card from "../ui/Card.astro";
+import Button from "../ui/Button.astro";
 import { formatDate } from "../../utils/dateUtils";
 
 export interface Props {
@@ -34,7 +34,7 @@ const sermons = allSermons
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {sermons.map((sermon) => (
         <Card
-          class="shadow-none"
+     
           title={sermon.data.title}
           image={{
             src: sermon.data.image || "/images/sermon-placeholder.webp",
