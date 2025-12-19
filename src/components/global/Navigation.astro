@@ -6,8 +6,14 @@ const t = useTranslations(Astro.currentLocale as Lang);
 const locale = Astro.currentLocale as Lang;
 // Define the navigation items
 const navItems = [
-  { text: t({en:"Home",es:"Página Principal"}),  href:getRelativeLocaleUrl(locale, "/") },
-  { text: t({en:"About Us",es:"Sobre Nosotros"}), href:getRelativeLocaleUrl(locale, "/about-us") },
+  {
+    text: t({ en: "Home", es: "Página Principal" }),
+    href: getRelativeLocaleUrl(locale, "/"),
+  },
+  {
+    text: t({ en: "About Us", es: "Sobre Nosotros" }),
+    href: getRelativeLocaleUrl(locale, "/about-us"),
+  },
   // { text: "Staff", href: "/staff" },
   // { text: "Ministries", href: "/ministries" },
   // { text: "Sermons", href: "/sermons" },
@@ -27,9 +33,10 @@ const currentPath = Astro.url.pathname;
   <ul class="flex items-center space-x-6">
     {
       navItems.map((item) => {
-        const isActive = currentPath === item.href || 
-                         (item.href !== "/" && currentPath.startsWith(item.href));
-        
+        const isActive =
+          currentPath === item.href ||
+          (item.href !== "/" && currentPath.startsWith(item.href));
+
         return (
           <li>
             <a
@@ -45,12 +52,12 @@ const currentPath = Astro.url.pathname;
         );
       })
     }
- <div class="h-6 border-l border-gray-400"></div>
-  <li >
-         <LocaleSelectSingle/>
-  </li>
+    <div class="h-6 border-l border-gray-400"></div>
+    <li>
+      <LocaleSelectSingle />
+    </li>
     <!-- GitHub Icon -->
-  
+
     <!-- <li>
       <a
         href="https://github.com/MauCariApa-com/maucariapacom-church-starter"
@@ -74,15 +81,25 @@ const currentPath = Astro.url.pathname;
   aria-label="Toggle Menu"
   aria-expanded="false"
 >
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-6 w-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M4 6h16M4 12h16M4 18h16"></path>
   </svg>
 </button>
 
 <!-- Mobile Menu Dropdown - Compact & Clean -->
 <div
   id="mobile-menu"
-  class="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-100 transform scale-y-0 origin-top transition-transform duration-200 ease-out lg:hidden z-50"
+  class="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-100 transform origin-top transition-transform duration-200 ease-out lg:hidden z-50"
   role="menu"
   aria-labelledby="mobile-menu-button"
 >
@@ -91,15 +108,16 @@ const currentPath = Astro.url.pathname;
     <div class="grid grid-cols-2 gap-3">
       {
         navItems.map((item) => {
-          const isActive = currentPath === item.href || 
-                           (item.href !== "/" && currentPath.startsWith(item.href));
-          
+          const isActive =
+            currentPath === item.href ||
+            (item.href !== "/" && currentPath.startsWith(item.href));
+
           return (
             <a
               href={item.href}
               class={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors text-center ${
-                isActive 
-                  ? "bg-primary-50 text-primary-600 border border-primary-200" 
+                isActive
+                  ? "bg-primary-50 text-primary-600 border border-primary-200"
                   : "text-gray-700 hover:bg-gray-50 hover:text-primary-600 border border-transparent"
               }`}
               role="menuitem"
@@ -111,11 +129,10 @@ const currentPath = Astro.url.pathname;
         })
       }
     </div>
-  
-    
+
     <!-- GitHub Link -->
     <div class="mt-4 pt-4 border-t border-gray-100">
-           <LocaleSelectSingle/>
+      <LocaleSelectSingle />
       <!-- <a
         href="https://github.com/MauCariApa-com/maucariapacom-church-starter"
         target="_blank"
@@ -137,21 +154,21 @@ const currentPath = Astro.url.pathname;
   #mobile-menu-button:hover svg {
     transform: scale(1.1);
   }
-  
+
   #mobile-menu-button svg {
     transition: transform 0.2s ease;
   }
-  
+
   /* Mobile menu show/hide states */
   #mobile-menu.show {
     transform: scaleY(1);
   }
-  
+
   /* Smooth hover effects */
   #mobile-menu a {
     transition: all 0.15s ease;
   }
-  
+
   /* Active state styling */
   #mobile-menu a[aria-current="page"] {
     font-weight: 600;
@@ -160,59 +177,66 @@ const currentPath = Astro.url.pathname;
 
 <script>
   // Mobile menu functionality
-  document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
     let isMenuOpen = false;
-    
+
     // Function to toggle mobile menu
     const toggleMobileMenu = () => {
       isMenuOpen = !isMenuOpen;
-      
+
+      mobileMenu.classList.toggle("scale-y-0", !isMenuOpen);
+      mobileMenu.classList.toggle("scale-y-100", isMenuOpen);
+
       if (isMenuOpen) {
         // Show menu
-        mobileMenu.classList.add('show');
-        mobileMenuButton.setAttribute('aria-expanded', 'true');
+        mobileMenu.classList.add("show");
+        mobileMenuButton.setAttribute("aria-expanded", "true");
       } else {
         // Hide menu
-        mobileMenu.classList.remove('show');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove("show");
+        mobileMenuButton.setAttribute("aria-expanded", "false");
       }
     };
-    
+
     // Event listeners
-    mobileMenuButton?.addEventListener('click', (e) => {
+    mobileMenuButton?.addEventListener("click", (e) => {
       e.stopPropagation();
       toggleMobileMenu();
     });
-    
+
     // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (isMenuOpen && !mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+    document.addEventListener("click", (e) => {
+      if (
+        isMenuOpen &&
+        !mobileMenu.contains(e.target) &&
+        !mobileMenuButton.contains(e.target)
+      ) {
         toggleMobileMenu();
       }
     });
-    
+
     // Close menu when clicking a navigation link
     const navLinks = mobileMenu?.querySelectorAll('a[href^="/"]');
-    navLinks?.forEach(link => {
-      link.addEventListener('click', () => {
+    navLinks?.forEach((link) => {
+      link.addEventListener("click", () => {
         if (isMenuOpen) {
           setTimeout(() => toggleMobileMenu(), 100);
         }
       });
     });
-    
+
     // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isMenuOpen) {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isMenuOpen) {
         toggleMobileMenu();
       }
     });
-    
+
     // Handle window resize
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       if (window.innerWidth >= 1024 && isMenuOpen) {
         toggleMobileMenu();
       }
