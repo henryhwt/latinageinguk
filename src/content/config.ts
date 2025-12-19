@@ -8,7 +8,7 @@ const staffCollection = defineCollection({
     image: z.string().startsWith('/uploads/staff/'),
     email: z.string().email().optional(),
     phone: z.string().optional(),
-    bio: z.string().optional(), // Short bio in frontmatter
+    bio: z.object({ en: z.string(), es: z.string() }).partial(),
     order: z.number().default(0),
     draft: z.boolean().default(false),
   }),

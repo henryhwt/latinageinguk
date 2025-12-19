@@ -23,10 +23,16 @@ export const getStaticPaths = () =>
   description="Latin Ageing UK is dedicated to empowering people aged 50 and over from the Latin American and Spanish-speaking communities in the London Borough of Southwark."
 >
   <HeroSection
-    title="Latin Ageing UK C.I.C"
-    subtitle="Join us in rediscovering joy and vitality in every moment!"
+    title="Latin Ageing UK CIC"
+    subtitle={t({
+      en: "Join us in rediscovering joy and vitality in every moment!",
+      es: "¡Únase a nosotros para redescubrir la alegría y la vitalidad en cada momento!",
+    })}
     backgroundImage="/uploads/hero/dance-yellow.jpg"
-    ctaText="Get In Touch"
+    ctaText={t({
+      en: "Get in touch",
+      es: "Ponte en contacto con nosotros",
+    })}
     ctaLink="/im-new"
     secondaryCtaText="Read Blog"
     secondaryCtaLink="/sermons"
@@ -130,14 +136,19 @@ export const getStaticPaths = () =>
             }
           </p>
 
-          <Button href="/about-us">
+          <Button
+            href={t({
+              en: "/en/about-us",
+              es: "/es/about-us",
+            })}
+          >
             {
               t({
                 en: "Learn More About Us ",
                 es: "Más información sobre nosotros",
               })
-            }</Button
-          >
+            }
+          </Button>
         </div>
       </div>
     </div>
@@ -187,103 +198,188 @@ export const getStaticPaths = () =>
   <section class="py-16 bg-gray-50">
     <div class="container">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Activities</h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          {
+            t({
+              en: "Our Activities",
+              es: "Nuestras actividades",
+            })
+          }
+        </h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Discover how you can connect, serve, and grow through our various
-          activies
+          {
+            t({
+              en: "Discover how you can connect, serve, and grow through our various activities",
+              es: "Descubra cómo puede conectarse, servir y crecer a través de nuestras diversas actividades.",
+            })
+          }
         </p>
       </div>
 
+
+
+        <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+  >
+    <div class="card text-center p-8">
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+        class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center text-7xl"
       >
-        <div class="card text-center p-8">
-          <div
-            class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center text-7xl"
-          >
-           <i class="material-icons">diversity_1</i> 
-          </div>
-
-          <h3 class="text-xl font-bold mb-3">Community Connection</h3>
-          <p class="text-gray-700 mb-4">
-            Make new friends and rediscover the joy of socialising in a
-            welcoming, inclusive environment.
-          </p>
-          <!-- <a
-        href="/ministries/worship-ministry"
-        class="text-primary-600 font-medium hover:text-primary-700"
-      >
-        Learn More →
-      </a> -->
-        </div>
-
-        <div class="card text-center p-8">
-          <div
-            class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center text-7xl"
-          >
-            <i class="material-icons">brush</i>
-          </div>
-
-          <h3 class="text-xl font-bold mb-3">Creative Activities</h3>
-          <p class="text-gray-700 mb-4">
-            Fun opportunties to express yourself through art, dance, music, and
-            more.
-          </p>
-        </div>
-        <div class="card text-center p-8">
-          <div
-            class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center text-7xl"
-          >
-            <i class="material-icons">directions_walk</i>
-          </div>
-
-          <h3 class="text-xl font-bold mb-3">Health & Fitness</h3>
-          <p class="text-gray-700 mb-4">
-            Stay fit and active with age-appropriate exercise classes.
-          </p>
-        </div>
-        <div class="card text-center p-8">
-          <div
-            class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center text-7xl"
-          >
-            <i class="material-icons">festival</i>
-          </div>
-
-          <h3 class="text-xl font-bold mb-3">Cultural Outings</h3>
-          <p class="text-gray-700 mb-4">
-            Enjoy trips and experiences that celebrate Latin American heritage.
-          </p>
-        </div>
-        <div class="card text-center p-8">
-          <div
-            class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center text-7xl"
-          >
-            <i class="material-icons">chat</i>
-          </div>
-
-          <h3 class="text-xl font-bold mb-3">English Classes</h3>
-          <p class="text-gray-700 mb-4">
-            Improve your English and gain independence in everyday life.
-          </p>
-       </div>
-        <div class="card text-center p-8">
-          <div
-            class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center text-7xl"
-          >
-            <i class="material-icons">local_activity</i>
-          </div>
-
-          <h3 class="text-xl font-bold mb-3">And More!</h3>
-          <p class="text-gray-700 mb-4">
-          We're always trying new events to invigorate the Latin American community.
-          </p>
-       </div>
+        <i class="material-icons">diversity_1</i>
       </div>
+
+      <h3 class="text-xl font-bold mb-3">
+        {
+          t({
+            en: "Community Connection",
+            es: "Conexión Comunitaria",
+          })
+        }
+      </h3>
+      <p class="text-gray-700 mb-4">
+        {
+          t({
+            en: "Make new friends and rediscover the joy of socialising in a welcoming, inclusive environment.",
+            es: "Haz nuevos amigos y redescubre la alegría de socializar en un entorno acogedor e inclusivo.",
+          })
+        }
+      </p>
+      <!-- <a
+    href="/ministries/worship-ministry"
+    class="text-primary-600 font-medium hover:text-primary-700"
+  >
+    Learn More →
+  </a> -->
+    </div>
+
+    <div class="card text-center p-8">
+      <div
+        class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center text-7xl"
+      >
+        <i class="material-icons">brush</i>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3">
+        {
+          t({
+            en: "Creative Activities",
+            es: "Actividades Creativas",
+          })
+        }
+      </h3>
+      <p class="text-gray-700 mb-4">
+        {
+          t({
+            en: "Fun opportunties to express yourself through art, dance, music, and more.",
+            es: "Oportunidades divertidas para expresarte a través del arte, la danza, la música y más.",
+          })
+        }
+      </p>
+    </div>
+    <div class="card text-center p-8">
+      <div
+        class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center text-7xl"
+      >
+        <i class="material-icons">directions_walk</i>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3">
+        {
+          t({
+            en: "Health & Fitness",
+            es: "Salud y Bienestar",
+          })
+        }
+      </h3>
+      <p class="text-gray-700 mb-4">
+        {
+          t({
+            en: "Stay fit and active with age-appropriate exercise classes.",
+            es: "Mantente en forma y activo con clases de ejercicio adecuadas a tu edad.",
+          })
+        }
+      </p>
+    </div>
+    <div class="card text-center p-8">
+      <div
+        class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center text-7xl"
+      >
+        <i class="material-icons">festival</i>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3">
+        {
+          t({
+            en: "Cultural Outings",
+            es: "Salidas Culturales",
+          })
+        }
+      </h3>
+      <p class="text-gray-700 mb-4">
+        {
+          t({
+            en: "Enjoy trips and experiences that celebrate Latin American heritage.",
+            es: "Disfruta de viajes y experiencias que celebran la herencia latinoamericana.",
+          })
+        }
+      </p>
+    </div>
+    <div class="card text-center p-8">
+      <div
+        class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center text-7xl"
+      >
+        <i class="material-icons">chat</i>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3">
+        {
+          t({
+            en: "English Classes",
+            es: "Clases de Inglés",
+          })
+        }
+      </h3>
+      <p class="text-gray-700 mb-4">
+        {
+          t({
+            en: "Improve your English and gain independence in everyday life.",
+            es: "Mejora tu inglés y adquiere independencia en la vida cotidiana.",
+          })
+        }
+      </p>
+    </div>
+    <div class="card text-center p-8">
+      <div
+        class="w-20 h-20 mx-auto mb-4 rounded-full bg-secondary-100 flex items-center justify-center text-7xl"
+      >
+        <i class="material-icons">local_activity</i>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3">
+        {
+          t({
+            en: "And More!",
+            es: "¡Y mucho más!",
+          })
+        }
+      </h3>
+      <p class="text-gray-700 mb-4">
+        {
+          t({
+            en: "We're always trying new events to invigorate the Latin American community.",
+            es: "Siempre estamos probando nuevos eventos para dinamizar la comunidad latinoamericana.",
+          })
+        }
+      </p>
+    </div>
+  </div>
+
+
+
+
+
     </div>
   </section>
-
-
-
 
   <!-- Call to Action -->
   <section
@@ -293,17 +389,32 @@ export const getStaticPaths = () =>
     <div class="container">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
-          Ready to Join Our Community?
+     {t({
+      en: "Ready to join our community?",
+      es: "¿Estás listo para unirte a nuestra comunidad?",
+    })}
         </h2>
         <p class="text-xl mb-8">
-We'd love for you to join us. 
-
-Get in touch today to find out what events are happening near you.
+          {t({
+      en: "We'd love for you to join us. Get in touch today to find out what events are happening near you.",
+      es: "Nos encantaría que te unieras a nosotros. Contáctanos hoy mismo para descubrir qué eventos se celebran cerca de ti.",
+    })}
         </p>
 
         <div class="flex flex-wrap justify-center gap-4">
-          <Button href="/im-new" variant="primary" size="lg">
+          <!-- <Button href="/im-new" variant="primary" size="lg">
             Get in touch
+          </Button> -->
+
+          <Button
+            href="https://www.facebook.com/profile.php?id=100090506665209"
+            variant="primary"
+            size="lg"
+          >
+           {t({
+      en: "Get in touch",
+      es: "Ponte en contacto con nosotros",
+    })}
           </Button>
 
           <!-- <Button

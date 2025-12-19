@@ -45,6 +45,7 @@
   }
 
 .material-icons {
+  @apply text-green-700;
   font-size: inherit !important;
 }
 

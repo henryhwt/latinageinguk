@@ -1,9 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import { useTranslations, type Lang } from "../../i18n";
+import { getRelativeLocaleUrl, getRelativeLocaleUrlList } from "astro:i18n";
 const { showAll = true, limit = 6 } = Astro.props;
 
 const t = useTranslations(Astro.currentLocale as Lang);
+const locale = Astro.currentLocale as Lang;
 
 
 const allStaff = await getCollection("staff", ({ data }) =>
@@ -16,7 +18,7 @@ const staffMembers = allStaff
 
 <!-- ================= STAFF GRID ================= -->
 <section id="staff" class="py-16 bg-white">
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4 grid justify-items-center">
     <h2 class="text-3xl font-bold text-center mb-4">
       {
             t({
@@ -35,7 +37,7 @@ const staffMembers = allStaff
           }
     </p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr justify-items-center">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
       {staffMembers.map(staff => (
         <div class="bg-white rounded-lg shadow overflow-hidden flex flex-col h-full">
           <!-- Foto (4:3) -->
@@ -50,7 +52,20 @@ const staffMembers = allStaff
             <div>
               <h3 class="text-xl font-semibold mb-1">{staff.data.name}</h3>
               <p class="text-primary-600 mb-2">{staff.data.title}</p>
-              <p class="text-gray-700 text-sm">{staff.data.bio}</p>
+              {/* <p class="text-gray-700 text-sm">{staff.data.bio} */}
+               {staffMembers.map((staff) => {
+const bio =
+  typeof staff.data.bio === "object"
+    ? staff.data.bio[locale as keyof typeof staff.data.bio] ??
+      staff.data.bio.en ??
+      ""
+    : staff.data.bio ?? "";
+
+ return (
+   <p class="text-gray-700 text-sm">{bio}</p>
+ );
+})}
+              {/* </p> */}
             </div>
             {/* <div class="mt-4 space-y-1 text-sm">
               {staff.data.email && (
