@@ -13,7 +13,7 @@
   }
   
   body {
-    @apply font-sans text-gray-800 bg-gray-50;
+    @apply font-sans text-gray-100 bg-gray-50;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -50,7 +50,7 @@
 }
 
 .header-logo{
-  @apply text-green-700 font-sans
+  @apply text-white font-sans
 }
 
 }
