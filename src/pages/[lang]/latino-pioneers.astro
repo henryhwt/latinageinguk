@@ -24,13 +24,13 @@ const shareText = encodeURIComponent(
 
 <BaseLayout
   title="Latino Pioneers - Latin Ageing UK"
-  description="Latino Pioneers is a short documentary film directed by Alexander Poroso Cuenca, exploring the struggles and successes of Latin American immigrants who arrived in the UK in the 1970s."
+  description="Latino Pioneers is a short documentary film directed by Alexander P.C. exploring the struggles and successes of Latin American immigrants who arrived in the UK in the 1970s."
 >
   <PageHeader
     title={t({ en: "Latino Pioneers", es: "Latino Pioneers" })}
     subtitle={t({
-      en: "A Documentary Film by Alexander Poroso Cuenca",
-      es: "Un documental de Alexander Poroso Cuenca",
+      en: "A Documentary Film by Alexander P.C.",
+      es: "Un documental de Alexander P.C.",
     })}
     backgroundImage="/lp-4.png"
   />
@@ -46,8 +46,8 @@ const shareText = encodeURIComponent(
           <p class="text-xl text-gray-700 mb-6">
             {
               t({
-                en: "Latino Pioneers is a short documentary film directed by Bolivian and London-based filmmaker Alexander Poroso Cuenca. His whose work brings the untold stories of the Latin American diaspora to the screen.",
-                es: "Latino Pioneers es un cortometraje documental dirigido por Alexander Poroso Cuenca, un cineasta boliviano afincado en Londres cuyo trabajo da voz a las historias no contadas de la diáspora latinoamericana.",
+                en: "Latino Pioneers is a short documentary film directed by Bolivian and London-based filmmaker Alexander P. C. whose work brings the untold stories of the Latin American diaspora to the screen.",
+                es: "Latino Pioneers es un cortometraje documental dirigido por Alexander P.C., un cineasta boliviano afincado en Londres cuyo trabajo da voz a las historias no contadas de la diáspora latinoamericana.",
               })
             }
           </p>
@@ -74,7 +74,7 @@ const shareText = encodeURIComponent(
 
         <div class="flex justify-center">
           <img
-            src="/lp-2.png"
+            src="/lp-1.png"
             alt="Latino Pioneers card"
             class="rounded-lg shadow-lg object-cover w-full"
           />
@@ -161,54 +161,14 @@ const shareText = encodeURIComponent(
     </div>
   </section>
 
-  <!-- About the Director -->
-  <section class="py-16 bg-white">
-    <div class="container">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div class="flex justify-center">
-          <img
-            src="/lp-1.png"
-            alt="Latino Pioneers title card"
-            class="rounded-lg shadow-lg object-cover w-full"
-          />
-        </div>
-
-        <div>
-          <h2 class="text-3xl md:text-4xl font-bold mb-6">
-            {t({ en: "About the Director", es: "Sobre el director" })}
-          </h2>
-          <p class="text-xl text-gray-700 mb-6">
-            {
-              t({
-                en: "Alexander Poroso Cuenca is a Bolivian filmmaker based in London whose work focuses on the stories of the Latin American diaspora. With a compassionate and authentic approach to documentary filmmaking, Alexander brings visibility to communities whose histories have too often gone unrecorded.",
-                es: "Alexander Poroso Cuenca es un cineasta boliviano afincado en Londres cuyo trabajo se centra en las historias de la diáspora latinoamericana. Con un enfoque compasivo y auténtico hacia el cine documental, Alexander visibiliza a comunidades cuyas historias con demasiada frecuencia han quedado sin registrar.",
-              })
-            }
-          </p>
-          <p class="text-xl text-gray-700 mb-8">
-            {
-              t({
-                en: "Latino Pioneers is a deeply personal project. It is a commitment to preserving the voices and memories of those who built a new home far from their countries of origin, and an act of gratitude to the generation that came before.",
-                es: "Latino Pioneers es un proyecto profundamente personal: un compromiso de preservar las voces y los recuerdos de quienes construyeron un nuevo hogar lejos de sus países de origen, y un acto de gratitud hacia la generación que vino antes.",
-              })
-            }
-          </p>
-          <!-- <Button href={youtubeUrl} variant="primary" size="lg" target="_blank">
-          {t({ en: "Watch Latino Pioneers", es: "Ver Latino Pioneers" })}
-          </Button> -->
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Watch & Share CTA -->
   <section
-    class="py-20 bg-cover bg-center text-white"
-    style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/lp-3.png"
+    class="py-20 bg-cover bg-center bg-white text-gray-700"
   >
     <div class="container">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">
           {t({ en: "Watch the Documentary", es: "Ver el documental" })}
         </h2>
         <p class="text-xl mb-8">
@@ -270,53 +230,6 @@ const shareText = encodeURIComponent(
     </div>
   </section>
 
-  <!-- Coming Soon: New Film -->
-  <section class="py-16 bg-gray-50">
-    <div class="container">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">
-          {
-            t({
-              en: "What's Next from Alexander Poroso Cuenca",
-              es: "Próximamente de Alexander Poroso Cuenca",
-            })
-          }
-        </h2>
-        <p class="text-xl text-gray-700 mb-6">
-          {
-            t({
-              en: "Alexander Poroso Cuenca is currently developing a new film. We are thrilled to be following his work and can't wait to share more details as the project takes shape.",
-              es: "Alexander Poroso Cuenca está desarrollando actualmente una nueva película. Nos emociona seguir su trabajo y esperamos poder compartir más detalles a medida que el proyecto tome forma.",
-            })
-          }
-        </p>
-        <p class="text-xl text-gray-700 mb-8">
-          {
-            t({
-              en: "Watch this space! Or follow Latin Ageing UK on social media to be the first to hear about developments, screening announcements, and news.",
-              es: "Sigue atento a este espacio o sigue a Latin Ageing UK en las redes sociales para ser el primero en conocer los avances, los anuncios de proyecciones y las novedades.",
-            })
-          }
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <Button
-            href="https://www.facebook.com/profile.php?id=100090506665209"
-            variant="primary"
-            target="_blank"
-          >
-            {t({ en: "Follow us on Facebook", es: "Síguenos en Facebook" })}
-          </Button>
-          <Button
-            href="https://www.instagram.com/latinageinguk"
-            variant="outline"
-            target="_blank"
-          >
-            {t({ en: "Follow us on Instagram", es: "Síguenos en Instagram" })}
-          </Button>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Share Your Story -->
   <section
