@@ -3,6 +3,7 @@ import "../assets/styles/global.css";
 import Seo from "../components/ui/Seo.astro";
 import Header from "../components/global/Header.astro";
 import Footer from "../components/global/Footer.astro";
+import { getLocalePaths, LOCALES, DEFAULT_LOCALE, type Lang } from "../i18n";
 
 export interface Props {
   title?: string;
@@ -13,48 +14,60 @@ export interface Props {
   };
   type?: "website" | "article";
   canonicalUrl?: string;
+  lang?: Lang;
 }
 
 const {
-  title = "Church Name - A Welcoming Christian Community",
-  description = "We are a welcoming Christian community dedicated to sharing God's love through worship, fellowship, and service.",
+  title = "Latin Ageing UK - Empowering the Latin American Community in Southwark",
+  description = "Latin Ageing UK empowers people aged 50+ from Latin American and Spanish-speaking communities in the London Borough of Southwark through cultural, social, and educational activities.",
   image = {
-    url: "/uploads/church-default.webp",
-    alt: "Church Name",
+    url: "/uploads/hero/group.jpg",
+    alt: "Latin Ageing UK community members",
   },
   type = "website",
   canonicalUrl,
+  lang = (Astro.currentLocale as Lang) ?? DEFAULT_LOCALE,
 } = Astro.props;
+
+const htmlLang = LOCALES[lang]?.lang ?? lang;
+const localePaths = getLocalePaths(Astro.url);
+const defaultLocaleUrl = new URL(`/${DEFAULT_LOCALE}/`, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link
-			href="https://fonts.googleapis.com/icon?family=Material+Icons"
-			rel="stylesheet"
-		/>
-
-
-    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <meta name="generator" content={Astro.generator} />
-    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <Seo
       title={title}
       description={description}
       image={image}
       type={type}
       canonicalUrl={canonicalUrl}
+      lang={lang}
     />
-    
+
+    <!-- hreflang: tell Google about language alternatives -->
+    {localePaths.map((lp) => (
+      <link
+        rel="alternate"
+        hreflang={LOCALES[lp.lang]?.lang ?? lp.lang}
+        href={Astro.site?.origin + lp.path}
+      />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={defaultLocaleUrl} />
+
     <link rel="sitemap" href="/sitemap-index.xml" />
- <link rel="apple-touch-icon" sizes="180x180" href="/uploads/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon/favicon-16x16.png">
-<!-- <link rel="manifest" href="/site.webmanifest"> -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/uploads/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon/favicon-16x16.png" />
   </head>
   <body>
     <div class="flex flex-col min-h-screen">

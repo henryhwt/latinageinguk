@@ -17,8 +17,14 @@ export const getStaticPaths = () =>
 ---
 
 <BaseLayout
-  title="About Us - Latin Ageing UK"
-  description="Learn about our charity's mission, values, and the people who make our community special."
+  title={t({
+    en: "About Us – Latin Ageing UK",
+    es: "Sobre Nosotros – Latin Ageing UK",
+  })}
+  description={t({
+    en: "Learn about Latin Ageing UK's mission to empower older Latin Americans in Southwark, our core values, and the people who make our community special.",
+    es: "Conoce la misión de Latin Ageing UK para empoderar a los latinoamericanos mayores en Southwark, nuestros valores fundamentales y las personas que hacen especial a nuestra comunidad.",
+  })}
 >
   <PageHeader
     title=   {

@@ -19,8 +19,14 @@ export const getStaticPaths = () =>
 ---
 
 <BaseLayout
-  title="Homepage - Latin Ageing UK"
-  description="Latin Ageing UK is dedicated to empowering people aged 50 and over from the Latin American and Spanish-speaking communities in the London Borough of Southwark."
+  title={t({
+    en: "Latin Ageing UK – Empowering Latin Americans in Southwark",
+    es: "Latin Ageing UK – Empoderando a los Latinoamericanos en Southwark",
+  })}
+  description={t({
+    en: "Latin Ageing UK empowers people aged 50+ from Latin American and Spanish-speaking communities in the London Borough of Southwark through cultural, social, and educational activities.",
+    es: "Latin Ageing UK empodera a personas de 50 años o más de las comunidades latinoamericana e hispanohablante del distrito londinense de Southwark mediante actividades culturales, sociales y educativas.",
+  })}
 >
   <HeroSection
     title="Latin Ageing UK CIC"
@@ -136,12 +142,7 @@ export const getStaticPaths = () =>
             }
           </p>
 
-          <Button
-            href={t({
-              en: "/en/about-us",
-              es: "/es/about-us",
-            })}
-          >
+          <Button href={getRelativeLocaleUrl(locale, "/about-us")}>
             {
               t({
                 en: "Learn More About Us ",

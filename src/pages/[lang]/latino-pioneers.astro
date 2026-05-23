@@ -18,13 +18,22 @@ export const getStaticPaths = () =>
 const youtubeUrl = "https://www.youtube.com/watch?v=jdgv8kGNedw";
 const encodedUrl = encodeURIComponent(youtubeUrl);
 const shareText = encodeURIComponent(
-  "Watch Latino Pioneers — a documentary about Latin American immigrants in the UK in the 1970s"
+  t({
+    en: "Watch Latino Pioneers — a documentary about Latin American immigrants in the UK in the 1970s",
+    es: "Mira Latino Pioneers — un documental sobre inmigrantes latinoamericanos en el Reino Unido en los años 70",
+  })
 );
 ---
 
 <BaseLayout
-  title="Latino Pioneers - Latin Ageing UK"
-  description="Latino Pioneers is a short documentary film directed by Alexander P.C. exploring the struggles and successes of Latin American immigrants who arrived in the UK in the 1970s."
+  title={t({
+    en: "Latino Pioneers – Latin Ageing UK",
+    es: "Latino Pioneers – Latin Ageing UK",
+  })}
+  description={t({
+    en: "Latino Pioneers is a short documentary film by Alexander P.C. exploring the courage and resilience of Latin American immigrants who arrived in the UK in the 1970s.",
+    es: "Latino Pioneers es un cortometraje documental de Alexander P.C. que explora el valor y la resiliencia de los inmigrantes latinoamericanos que llegaron al Reino Unido en los años 70.",
+  })}
 >
   <PageHeader
     title={t({ en: "Latino Pioneers", es: "Latino Pioneers" })}

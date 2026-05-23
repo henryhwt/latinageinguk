@@ -1,4 +1,6 @@
 ---
+import { DEFAULT_LOCALE, LOCALES, type Lang } from "../../i18n";
+
 export interface Props {
   title: string;
   description: string;
@@ -8,35 +10,50 @@ export interface Props {
   };
   type?: "website" | "article";
   canonicalUrl?: string;
+  lang?: Lang;
 }
 
 const {
   title,
   description,
   image = {
-    url: "/uploads/church-default.webp",
-    alt: "Church Name",
+    url: "/uploads/hero/group.jpg",
+    alt: "Latin Ageing UK community members",
   },
   type = "website",
   canonicalUrl,
+  lang = DEFAULT_LOCALE,
 } = Astro.props;
 
-// Get the canonical URL
 const canonicalURL = canonicalUrl || new URL(Astro.url.pathname, Astro.site);
 
-// Get Church address and contact info (would come from site config in a real implementation)
-const churchInfo = {
-  name: "Church Name",
+// Map locale codes to OG locale format
+const ogLocaleMap: Record<string, string> = {
+  en: "en_US",
+  es: "es_ES",
+};
+const ogLocale = ogLocaleMap[lang] ?? lang;
+const inLanguage = LOCALES[lang]?.lang ?? lang;
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  name: "Latin Ageing UK",
+  alternateName: "Latin Ageing UK CIC",
+  description:
+    "Latin Ageing UK empowers people aged 50+ from Latin American and Spanish-speaking communities in the London Borough of Southwark.",
+  url: "https://latinageinguk.co.uk",
+  logo: new URL("/uploads/favicon/apple-touch-icon.png", Astro.site).toString(),
   address: {
-    streetAddress: "123 Main Street",
-    addressLocality: "Anytown",
-    addressRegion: "ST",
-    postalCode: "12345",
-    addressCountry: "US",
+    "@type": "PostalAddress",
+    addressLocality: "Southwark",
+    addressRegion: "London",
+    addressCountry: "GB",
   },
-  telephone: "+1-555-123-4567",
-  email: "info@churchname.org",
-  url: Astro.site?.toString() || "https://example.com",
+  inLanguage,
+  sameAs: [
+    "https://www.facebook.com/profile.php?id=100090506665209",
+  ],
 };
 ---
 
@@ -45,65 +62,52 @@ const churchInfo = {
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
 
-<!-- Open Graph / Facebook -->
+<!-- Open Graph -->
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image.url, Astro.site)} />
 <meta property="og:image:alt" content={image.alt} />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:site_name" content="Latin Ageing UK" />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image.url, Astro.site)} />
-<meta property="twitter:image:alt" content={image.alt} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image.url, Astro.site)} />
+<meta name="twitter:image:alt" content={image.alt} />
 
-<!-- JSON-LD Schema for Church -->
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Church",
-    "name": "${churchInfo.name}",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "${churchInfo.address.streetAddress}",
-      "addressLocality": "${churchInfo.address.addressLocality}",
-      "addressRegion": "${churchInfo.address.addressRegion}",
-      "postalCode": "${churchInfo.address.postalCode}",
-      "addressCountry": "${churchInfo.address.addressCountry}"
-    },
-    "telephone": "${churchInfo.telephone}",
-    "email": "${churchInfo.email}",
-    "url": "${churchInfo.url}"
-  }
-</script>
+<!-- JSON-LD: Organisation -->
+<script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
 
 {
   type === "article" && (
-    <script type="application/ld+json">
-      {
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "${title}",
-        "image": "${new URL(image.url, Astro.site)}",
-        "description": "${description}",
-        "publisher": {
+        headline: title,
+        inLanguage,
+        image: new URL(image.url, Astro.site).toString(),
+        description: description,
+        publisher: {
           "@type": "Organization",
-          "name": "${churchInfo.name}",
-          "logo": {
+          name: "Latin Ageing UK",
+          logo: {
             "@type": "ImageObject",
-            "url": "${new URL("/uploads/logo.png", Astro.site)}"
-          }
+            url: new URL("/uploads/favicon/apple-touch-icon.png", Astro.site).toString(),
+          },
         },
-        "url": "${canonicalURL}",
-        "mainEntityOfPage": {
+        url: canonicalURL.toString(),
+        mainEntityOfPage: {
           "@type": "WebPage",
-          "@id": "${canonicalURL}"
-        }
-      }
-    </script>
+          "@id": canonicalURL.toString(),
+        },
+      })}
+    />
   )
 }
